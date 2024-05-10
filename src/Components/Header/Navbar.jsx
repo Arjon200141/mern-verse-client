@@ -20,7 +20,7 @@ const Navbar = () => {
             <li>
                 <div className="dropdown dropdown-bottom">
                     <div tabIndex={0} className=" text-2xl font-medium flex items-center gap-1">Dashboard <IoIosArrowDropdownCircle className="text-semibold mt-1"/></div>
-                    <ul tabIndex={0} className="dropdown-content text-xl font-medium  menu p-2 bg-base-100 w-52">
+                    <ul tabIndex={0} className="dropdown-content text-xl font-medium menu p-2 bg-base-100 w-52">
                         <li><NavLink to="/addservice" style={navlinkStyles}>Add Service</NavLink></li>
                         <li><NavLink to="/manageservice" style={navlinkStyles}>Manage Service</NavLink></li>
                         <li><NavLink to="/bookedservice" style={navlinkStyles}>Booked-Services</NavLink></li>
@@ -45,7 +45,7 @@ return (
                     </ul>
                 </div>
                 <Link to="/">
-                    <a className="btn btn-ghost font-bold text-4xl">MERN <span className="text-red-500">verse</span></a>
+                    <a className="btn btn-ghost md:font-bold md:text-4xl">MERN <span className="text-red-500">verse</span></a>
                 </Link>
             </div>
 
