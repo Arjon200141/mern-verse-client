@@ -1,4 +1,4 @@
-import { IoIosArrowDropdown, IoIosArrowDropdownCircle } from "react-icons/io";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 

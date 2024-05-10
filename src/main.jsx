@@ -11,12 +11,18 @@ import Services from './Components/Layouts/Services';
 import LogIn from './Components/Log In/LogIn';
 import Register from './Components/Log In/Register';
 import Home from './Components/Home/Home';
+import AddServices from './Components/Layouts/AddServices';
+import ManageService from './Components/Layouts/ManageService';
+import BookedServices from './Components/Layouts/BookedServices';
+import ServicesToDo from './Components/Layouts/ServicesToDo';
+import ErrorPage from './Components/ErrorPage/ErrorPage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:"/",
@@ -33,6 +39,22 @@ const router = createBrowserRouter([
       {
         path:"/register",
         element: <Register></Register>
+      },
+      {
+        path: "/addservice",
+        element: <AddServices></AddServices>,
+      },
+      {
+        path:"/manageservice",
+        element: <ManageService></ManageService>,
+      },
+      {
+        path:"/bookedservice",
+        element: <BookedServices></BookedServices>,
+      },
+      {
+        path: "/servicetodo",
+        element: <ServicesToDo></ServicesToDo>
       }
     ]
   },
