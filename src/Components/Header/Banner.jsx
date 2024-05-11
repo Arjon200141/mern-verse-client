@@ -14,17 +14,17 @@ const Banner = () => {
                 scrollbar={{ draggable: true }}
             >
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/VDdzZ4m/shoulder-view-software-developers-programming-desktop-computer-startup-office-35674-15889.jpg
+                    <img src="https://i.ibb.co/9cCGCrC/photorealistic-wedding-venue-with-intricate-decor-ornaments-23-2151481468.jpg
                     " alt="" className='w-full h-[90vh]'/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/Xp9WncX/person-front-computer-working-html-23-2150038835.jpg" alt="" className='w-full h-[90vh]'/>
+                    <img src="https://i.ibb.co/db5dK5Q/decorated-banquet-hall-with-flowers-8353-10058.jpg" alt="" className='w-full h-[90vh]'/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="https://i.ibb.co/tKJcsmK/rear-view-programmer-working-all-night-long-1098-18697.jpg" alt="" className='w-full h-[90vh]'/>
+                    <img src="https://i.ibb.co/dkpyPWr/photorealistic-wedding-venue-with-intricate-decor-ornaments-23-2151481465.jpg" alt="" className='w-full h-[90vh]'/>
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src="https://i.ibb.co/sqdBmGC/human-hand-typing-computer-keyboard-night-generated-by-ai-188544-31050.jpg" alt="" className='w-full h-[90vh]'/>
+                    <img src="https://i.ibb.co/cCDvr8B/elegant-wedding-reception-area-160672-6143.jpg" alt="" className='w-full h-[90vh]'/>
                 </SwiperSlide>
             </Swiper>
         </div>

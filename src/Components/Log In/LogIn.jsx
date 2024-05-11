@@ -15,7 +15,7 @@ const LogIn = () => {
             <div className="hero-content">
                 <div className="card shrink-0 w-full max-w-lg shadow-xl bg-sky-200 md:ml-20">
                     <h2 data-aos="flip-left" className="text-3xl text-center font-semibold mt-4 pt-6">Log in to your account</h2>
-                    <form className="card-body">
+                    <form onSubmit={HandleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -42,7 +42,7 @@ const LogIn = () => {
                         <p>--------</p>
                     </div>
                     <div className="mb-6 flex justify-center items-center gap-12">
-                        <button data-aos="fade-right" className="btn h-16 px-6 py-1 md:ml-8 text-lg font-medium flex w-3/4"><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> Continue with Google </button>
+                        <button data-aos="fade-right" className="btn h-16 px-6 py-1 text-lg font-medium flex w-3/4"><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> Continue with Google </button>
                     </div>
                     <p className="text-xl font-semibold text-center mb-6">New Here ? <Link to="/register" className="text-red-500">Register Now</Link></p>
                 </div>

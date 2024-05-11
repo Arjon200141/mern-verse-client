@@ -16,40 +16,44 @@ import ManageService from './Components/Layouts/ManageService';
 import BookedServices from './Components/Layouts/BookedServices';
 import ServicesToDo from './Components/Layouts/ServicesToDo';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
+import AuthProviders from './Components/providers/AuthProviders';
+
+
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>
       },
       {
         path: "/services",
         element: <Services></Services>,
       },
       {
-        path:"/login",
-        element: <LogIn></LogIn>
+        path: "/login",
+        element: <LogIn></LogIn>,
       },
       {
-        path:"/register",
-        element: <Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
         path: "/addservice",
         element: <AddServices></AddServices>,
       },
       {
-        path:"/manageservice",
+        path: "/manageservice",
         element: <ManageService></ManageService>,
       },
       {
-        path:"/bookedservice",
+        path: "/bookedservice",
         element: <BookedServices></BookedServices>,
       },
       {
@@ -62,6 +66,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+   
+      <AuthProviders>
+      <RouterProvider router={router} />
+      </AuthProviders>
+  
   </React.StrictMode>,
 )

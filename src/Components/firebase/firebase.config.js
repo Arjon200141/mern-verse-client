@@ -6,17 +6,15 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBzN5RsQ3_hyeWuqpuzh7o48md8IEHmLyo",
-  authDomain: "mern-verse.firebaseapp.com",
-  projectId: "mern-verse",
-  storageBucket: "mern-verse.appspot.com",
-  messagingSenderId: "540854988866",
-  appId: "1:540854988866:web:90aaa8c63069f4a5837ddb"
+    apiKey: "AIzaSyDy2OunR8quQR9_4zYxF-n4fkCOuiIHT8Q",
+    authDomain: "event-elevate-a0b4e.firebaseapp.com",
+    projectId: "event-elevate-a0b4e",
+    storageBucket: "event-elevate-a0b4e.appspot.com",
+    messagingSenderId: "949959294297",
+    appId: "1:949959294297:web:8e5e2a1ae51c796285a048"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
-export default  app;
-
+export default app;
