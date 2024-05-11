@@ -1,13 +1,33 @@
 import { Link } from "react-router-dom";
 import Aos from "aos"
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import "aos/dist/aos.css";
+import { AuthContext } from "../providers/AuthProviders";
+
 
 
 const LogIn = () => {
+
+    const {signInUser} = useContext(AuthContext)
+
     useEffect(() => {
         Aos.init({ duration: 200 })
     }, [])
+
+    const HandleLogin = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const user={email,password}
+        console.log(user);
+        form.reset();
+        signInUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error=> console.log(error.message))
+    }
 
 
     return (
