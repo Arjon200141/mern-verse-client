@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import Root from './Components/Root/Root';
 import Services from './Components/Layouts/Services';
 import LogIn from './Components/Log In/LogIn';
@@ -17,10 +18,6 @@ import BookedServices from './Components/Layouts/BookedServices';
 import ServicesToDo from './Components/Layouts/ServicesToDo';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import AuthProviders from './Components/providers/AuthProviders';
-
-
-
-
 
 const router = createBrowserRouter([
   {
@@ -66,10 +63,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   
-      <AuthProviders>
+    <AuthProviders>
       <RouterProvider router={router} />
-      </AuthProviders>
-  
+    </AuthProviders>
   </React.StrictMode>,
 )

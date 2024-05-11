@@ -1,18 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Aos from "aos"
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import { AuthContext } from "../providers/AuthProviders";
-
+import { signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
+import { GoogleAuthProvider } from "firebase/auth";
 
 
 const LogIn = () => {
 
-    const {signInUser} = useContext(AuthContext)
+    const {signInUser} = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         Aos.init({ duration: 200 })
     }, [])
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const loggedInUser = result.user;
+                setUser(loggedInUser);
+                console.log(loggedInUser);
+                navigate(location?.state? location.state : "/")
+
+            })
+            .catch(error => {
+                console.error(error.message);
+            })
+    }
 
     const HandleLogin = e =>{
         e.preventDefault();
@@ -62,7 +84,7 @@ const LogIn = () => {
                         <p>--------</p>
                     </div>
                     <div className="mb-6 flex justify-center items-center gap-12">
-                        <button data-aos="fade-right" className="btn h-16 px-6 py-1 text-lg font-medium flex w-3/4"><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> Continue with Google </button>
+                        <button onClick={handleGoogleLogin} data-aos="fade-right" className="btn h-16 px-6 py-1 text-lg font-medium flex w-3/4"><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> Continue with Google </button>
                     </div>
                     <p className="text-xl font-semibold text-center mb-6">New Here ? <Link to="/register" className="text-red-500">Register Now</Link></p>
                 </div>

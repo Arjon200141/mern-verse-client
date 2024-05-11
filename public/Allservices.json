@@ -1,0 +1,72 @@
+[
+    {
+        "ServiceImage": "https://i.ibb.co/rFT3480/decorated-wedding-hall-with-candles-round-tables-centerpieces-8353-10057.jpg",
+        "ServiceName": "Event Planning",
+        "ServiceDescription": "Professional event planning services.",
+        "ServiceProvider": {
+            "Image": "event_planner.jpg",
+            "Name": "Event Solutions Inc."
+        },
+        "ServiceArea": "New York City",
+        "ServicePrice": "$1000"
+    },
+    {
+        "ServiceImage": "https://i.ibb.co/Lxcy9xm/people-group-catering-buffet-food-indoor-luxury-restaurant-with-meat-colorful-fruits-vegetables-5306.jpg",
+        "ServiceName": "Catering",
+        "ServiceDescription": "Delicious catering for events.",
+        "ServiceProvider": {
+            "Image": "catering_company.jpg",
+            "Name": "TasteBuds Catering"
+        },
+        "ServiceArea": "Los Angeles",
+        "ServicePrice": "$1500"
+    },
+    {
+        "ServiceImage": "https://i.ibb.co/YX5xqPY/side-view-photographer-married-couple-23-2150264490.jpg",
+        "ServiceName": "Photography",
+        "ServiceDescription": "Capture your special moments.",
+        "ViewDetailButton": true,
+        "ServiceProvider": {
+            "Image": "photographer.jpg",
+            "Name": "Snapshot Studios"
+        },
+        "ServiceArea": "Chicago",
+        "ServicePrice": "$800"
+    },
+    {
+        "ServiceImage": "https://i.ibb.co/vP4nCFX/photorealistic-wedding-venue-with-intricate-decor-ornaments-23-2151481493.jpg",
+        "ServiceName": "Venue Rental",
+        "ServiceDescription": "Beautiful venues for your event.",
+        "ViewDetailButton": true,
+        "ServiceProvider": {
+            "Image": "venue_company.jpg",
+            "Name": "Cityscape Venues"
+        },
+        "ServiceArea": "San Francisco",
+        "ServicePrice": "$2000"
+    },
+    {
+        "ServiceImage": "https://i.ibb.co/LPSgs0f/front-view-smiley-woman-playing-guitar-23-2149454346.jpg",
+        "ServiceName": "Entertainment",
+        "ServiceDescription": "Live entertainment for your guests.",
+        "ViewDetailButton": true,
+        "ServiceProvider": {
+            "Image": "entertainment_company.jpg",
+            "Name": "Encore Entertainment"
+        },
+        "ServiceArea": "Miami",
+        "ServicePrice": "$1200"
+    },
+    {
+        "ServiceImage": "https://i.ibb.co/SKKt4tQ/beautiful-pink-decorated-wedding-serving-with-centerpiece-lightening-candles-8353-10052.jpg",
+        "ServiceName": "Decoration",
+        "ServiceDescription": "Elegant decorations to enhance your event.",
+        "ViewDetailButton": true,
+        "ServiceProvider": {
+            "Image": "decorator.jpg",
+            "Name": "Chic Designs"
+        },
+        "ServiceArea": "Dallas",
+        "ServicePrice": "$500"
+    }
+]

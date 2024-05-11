@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProviders";
+import { signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
 
@@ -11,6 +14,31 @@ const Register = () => {
     useEffect(() => {
         Aos.init({ duration: 200 });
     }, []);
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        Aos.init({ duration: 200 })
+    }, [])
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, googleProvider)
+            .then(result => {
+                const loggedInUser = result.user;
+                setUser(loggedInUser);
+                console.log(loggedInUser);
+                navigate(location?.state ? location.state : "/")
+
+            })
+            .catch(error => {
+                console.error(error.message);
+            })
+    }
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -78,7 +106,7 @@ const Register = () => {
                         <p className="mt-1">--------</p>
                     </div>
                     <div className="mb-6 flex justify-center items-center gap-12">
-                        <button data-aos="fade-right" className="btn h-16 px-6 py-1 w-3/4  text-lg font-medium flex "><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> Continue with Google </button>
+                        <button onClick={handleGoogleLogin} data-aos="fade-right" className="btn h-16 px-6 py-1 w-3/4  text-lg font-medium flex "><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> Continue with Google </button>
                     </div>
                     <p className="text-xl font-semibold text-center mb-6">Already Have an Account? <Link to="/login" className="text-red-500">Log In</Link></p>
                 </div>
