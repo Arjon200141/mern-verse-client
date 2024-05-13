@@ -7,3 +7,14 @@
 .merriweather-light {
     font-family: "Merriweather", serif;
   }
+
+body{
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0.714) , rgba(110, 144, 240, 0.714) , rgb(0, 58, 14));
+}
+.grtext{
+  text-shadow: 0 0 2px #ffffff, 0 0 2px #ffffff;
+}
+.bhjj{
+  /* color:#ff6f6f */
+  color:#ff6f6f00
+}

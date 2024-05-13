@@ -1,63 +1,49 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import Aos from "aos"
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "aos/dist/aos.css";
 import { AuthContext } from "../providers/AuthProviders";
-import { signInWithPopup } from "firebase/auth";
-import { auth } from "../firebase/firebase.config";
-import { GoogleAuthProvider } from "firebase/auth";
 
 
 const LogIn = () => {
 
-    const {signInUser} = useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider();
-
-    const location = useLocation();
-    const navigate = useNavigate();
-
-    const [user, setUser] = useState(null);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
 
     useEffect(() => {
-        Aos.init({ duration: 200 })
+        Aos.init({ duration: 300 })
     }, [])
 
-    const handleGoogleLogin = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const loggedInUser = result.user;
-                setUser(loggedInUser);
-                console.log(loggedInUser);
-                navigate(location?.state? location.state : "/")
-
-            })
-            .catch(error => {
-                console.error(error.message);
-            })
-    }
-
-    const HandleLogin = e =>{
+    const handleLogIn = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user={email,password}
-        console.log(user);
-        form.reset();
-        signInUser(email, password)
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error=> console.log(error.message))
+        console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => console.log(error.message))
     }
 
+    const handleGoogleLogin = () => {
+        signInWithGoogle()
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
+    }
 
     return (
-        <div className="w-full py-12 bg-sky-100 text-xl">
+        <div className="w-full py-12 bg-sky-100">
+            <ToastContainer />
             <div className="hero-content">
-                <div className="card shrink-0 w-full max-w-lg shadow-xl bg-sky-200 md:ml-20">
+                <div className="card shrink-0 w-full max-w-lg shadow-xl bg-sky-200">
                     <h2 data-aos="flip-left" className="text-3xl text-center font-semibold mt-4 pt-6">Log in to your account</h2>
-                    <form onSubmit={HandleLogin} className="card-body">
+                    <form onSubmit={handleLogIn} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -78,13 +64,15 @@ const LogIn = () => {
                             <button className="btn bg-red-300 text-lg font-medium">Log In</button>
                         </div>
                     </form>
-                    <div className="flex gap-2 justify-center">
-                        <p>--------</p>
-                        <p className="text-3xl text-center font-semibold mb-4">OR</p>
-                        <p>--------</p>
+
+                    <div className="flex justify-center gap-1">
+                        <p>------------------</p>
+                        <h2 className="text-xl font-medium text-center mb-3"> Continue With </h2>
+                        <p>------------------</p>
                     </div>
+
                     <div className="mb-6 flex justify-center items-center gap-12">
-                        <button onClick={handleGoogleLogin} data-aos="fade-right" className="btn h-16 px-6 py-1 text-lg font-medium flex w-3/4"><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> Continue with Google </button>
+                        <button data-aos="fade-right" onClick={handleGoogleLogin} className="btn h-16 px-6 py-1 md:ml-8 text-lg font-medium"><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> </button>
                     </div>
                     <p className="text-xl font-semibold text-center mb-6">New Here ? <Link to="/register" className="text-red-500">Register Now</Link></p>
                 </div>
