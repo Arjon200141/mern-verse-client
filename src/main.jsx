@@ -18,6 +18,7 @@ import BookedServices from './Components/Layouts/BookedServices';
 import ServicesToDo from './Components/Layouts/ServicesToDo';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import AuthProviders from './Components/providers/AuthProviders';
+import PopularServices from './Components/Layouts/PopularServices';
 
 const router = createBrowserRouter([
   {
@@ -28,10 +29,16 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("allservices.json"),
       },
       {
         path: "/services",
         element: <Services></Services>,
+        loader: () => fetch("allservices.json"),
+      },
+      {
+        path: "/popular",
+        element: <PopularServices></PopularServices>,
       },
       {
         path: "/login",
