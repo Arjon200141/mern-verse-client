@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProviders";
+
 const AddServices = () => {
+
+    const { user } = useContext(AuthContext);
+
     return (
         <div className="bg-green-100 p-12">
             <h2 className="text-4xl font-semibold text-center">Add a Service</h2>
@@ -38,13 +44,14 @@ const AddServices = () => {
                             <div className="label">
                                 <span className="label-text text-xl font-semibold"> Provider Name </span>
                             </div>
-                            <input type="text" placeholder="Provider Name" name="providername" className="input input-bordered w-full " />
+                            <input type="text" placeholder="Provider Name" name="providername" defaultValue={user.
+                                displayName} readOnly className="input input-bordered w-full " />
                         </label>
                         <label className="form-control w-full ">
                             <div className="label">
                                 <span className="label-text text-xl font-semibold"> Provider Email </span>
                             </div>
-                            <input type="email" placeholder="Provider Email" name="provideremail" className="input input-bordered w-full " />
+                            <input type="email" placeholder="Provider Email" name="provideremail" defaultValue={user.email} readOnly className="input input-bordered w-full " />
                         </label>
                     </div>
                     <label className="form-control w-full ">
@@ -57,9 +64,10 @@ const AddServices = () => {
                         <div className="label">
                             <span className="label-text text-xl font-semibold">Provider Image URL </span>
                         </div>
-                        <input type="text" placeholder="Provider Image URL" name="providerimage" className="input input-bordered w-full " />
+                        <input type="text" placeholder="Provider Image URL" defaultValue={user.photoURL
+                        } readOnly name="providerimage" className="input input-bordered w-full " />
                     </label>
-                    <input type="submit" value="Add Service" className="btn bg-orange-100 w-full h-14 text-2xl font-semibold"/>
+                    <input type="submit" value="Add Service" className="btn bg-orange-100 w-full h-14 text-2xl font-semibold" />
                 </form>
             </div>
         </div>
