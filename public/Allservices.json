@@ -6,7 +6,8 @@
         "ServiceDescription": "Professional event planning services.",
         "ServiceProvider": {
             "Image": "https://i.ibb.co/JRVBGNP/event-manager-with-laptop-banquet-hall-23-2148085309.jpg",
-            "Name": "Event Solutions Inc."
+            "Name": "Event Solutions Inc.",
+            "Email": "eventsolutions@example.com"
         },
         "ServiceArea": "New York City",
         "ServicePrice": "$1000"
@@ -18,7 +19,8 @@
         "ServiceDescription": "Delicious catering for events.",
         "ServiceProvider": {
             "Image": "https://i.ibb.co/JCQTMCm/man-preparing-food-trays-kitchen-201606-17158.jpg",
-            "Name": "TasteBuds Catering"
+            "Name": "TasteBuds Catering",
+            "Email": "tasteBudscatering@example.com"
         },
         "ServiceArea": "Los Angeles",
         "ServicePrice": "$1500"
@@ -31,7 +33,8 @@
         "ViewDetailButton": true,
         "ServiceProvider": {
             "Image": "https://i.ibb.co/sbqzv9K/young-stylish-photographer-holds-professional-camera-taking-photos-8353-6506.jpg",
-            "Name": "Snapshot Studios"
+            "Name": "Snapshot Studios",
+            "Email": "snapshotstudios@example.com"
         },
         "ServiceArea": "Chicago",
         "ServicePrice": "$800"
@@ -44,7 +47,8 @@
         "ViewDetailButton": true,
         "ServiceProvider": {
             "Image": "https://i.ibb.co/mhC1bGg/event-managers-showing-something-laptop-couple-23-2148085253.jpg",
-            "Name": "Cityscape Venues"
+            "Name": "Cityscape Venues",
+            "Email": "cityscapevenues@example.com"
         },
         "ServiceArea": "San Francisco",
         "ServicePrice": "$2000"
@@ -57,7 +61,8 @@
         "ViewDetailButton": true,
         "ServiceProvider": {
             "Image": "https://i.ibb.co/xJCXQPz/background-wallpaper-creative-manipulation-845014-9303.jpg",
-            "Name": "Encore Entertainment"
+            "Name": "Encore Entertainment",
+            "Email": "encoreentertainment@example.com"
         },
         "ServiceArea": "Miami",
         "ServicePrice": "$1200"
@@ -70,7 +75,8 @@
         "ViewDetailButton": true,
         "ServiceProvider": {
             "Image": "https://i.ibb.co/LNRsFM9/female-wedding-planner-working-ceremony-23-2150167259.jpg",
-            "Name": "Chic Designs"
+            "Name": "Chic Designs",
+            "Email": "chicdesigns@example.com"
         },
         "ServiceArea": "Dallas",
         "ServicePrice": "$500"
@@ -83,7 +89,8 @@
         "ServiceDescription": "Professional coordination to ensure your event runs smoothly.",
         "ServiceProvider": {
             "Image": "https://i.ibb.co/bFx0cSC/business-executives-interacting-with-each-other-while-having-coffee-107420-73041.jpg",
-            "Name": "Perfect Planning Partners"
+            "Name": "Perfect Planning Partners",
+            "Email": "perfectplanning@example.com"
         },
         "ServiceArea": "Seattle",
         "ServicePrice": "$900"
@@ -95,7 +102,8 @@
         "ServiceDescription": "Comprehensive management for conferences and corporate events.",
         "ServiceProvider": {
             "Image": "https://i.ibb.co/TbYDCjw/businessman-suit-pointing-charts-tv-screen-meeting-with-his-colleagues-leadership-meeting-conference.jpg",
-            "Name": "Corporate Events Unlimited"
+            "Name": "Corporate Events Unlimited",
+            "Email": "corporateevents@example.com"
         },
         "ServiceArea": "Washington D.C.",
         "ServicePrice": "$2500"
@@ -107,7 +115,8 @@
         "ServiceDescription": "Arrange engaging speakers for your event.",
         "ServiceProvider": {
             "Image": "https://i.ibb.co/SQhg0gs/side-view-musicians-working-studio-23-2150206753.jpg",
-            "Name": "Keynote Connectors"
+            "Name": "Keynote Connectors",
+            "Email": "keynoteconnectors@example.com"
         },
         "ServiceArea": "Boston",
         "ServicePrice": "$1500"
@@ -119,7 +128,8 @@
         "ServiceDescription": "Professional production for concerts and live performances.",
         "ServiceProvider": {
             "Image": "https://i.ibb.co/kJdRVpT/group-people-are-working-theater-stage-they-are-setting-up-lights-cameras-there-is-large-screen-back.jpg",
-            "Name": "StageCraft Productions"
+            "Name": "StageCraft Productions",
+            "Email": "stageCraftproductions@example.com"
         },
         "ServiceArea": "Nashville",
         "ServicePrice": "$3000"
