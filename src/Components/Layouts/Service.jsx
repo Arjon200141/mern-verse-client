@@ -1,14 +1,15 @@
 import { FaLocationDot } from "react-icons/fa6";
 import { IoPricetagsSharp } from "react-icons/io5";
+import PropTypes from 'prop-types';
 
 const Service = ({ service }) => {
 
-    const { id, ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice } = service;
+    const { ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice } = service;
 
     return (
         <div className="card
          card-compact bg-base-100/35 shadow-xl">
-            <figure><img src={ServiceImage} alt="Service Image" /></figure>
+            <figure><img src={ServiceImage} alt="Service Image" className="h-[450px]"/></figure>
             <div className="card-body ml-6 space-y-3">
                 <h2 className="card-title text-3xl">{ServiceName}</h2>
                 <p className="text-2xl">{ServiceDescription}</p>
@@ -34,6 +35,10 @@ const Service = ({ service }) => {
             </div>
         </div>
     );
+};
+
+Service.propTypes = {
+    service: PropTypes.object.isRequired,
 };
 
 export default Service;
