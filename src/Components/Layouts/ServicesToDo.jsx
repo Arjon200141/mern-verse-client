@@ -7,7 +7,7 @@ const ServicesToDo = () => {
     const { user } = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
 
-    const url = `http://localhost:5000/booking?ServiceProviderEmail=${user.email}`;
+    const url = `https://mern-verse-server.vercel.app/booking?ServiceProviderEmail=${user.email}`;
 
     useEffect(() => {
         fetch(url)

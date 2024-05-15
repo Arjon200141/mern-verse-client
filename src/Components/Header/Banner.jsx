@@ -3,7 +3,7 @@ import { Navigation, Pagination, Scrollbar, A11y , EffectFlip } from 'swiper/mod
 import 'swiper/swiper-bundle.css';
 const Banner = () => {
     return (
-        <div className='mx-6 my-6'>
+        <div className=''>
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y , EffectFlip]}
                 spaceBetween={50}

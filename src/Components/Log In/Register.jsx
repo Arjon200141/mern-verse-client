@@ -1,15 +1,18 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Aos from "aos"
 import { useContext, useEffect } from "react";
 import "aos/dist/aos.css";
 import { AuthContext } from '../providers/AuthProviders';
 import { Helmet } from 'react-helmet';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
     const { createUser , signInWithGoogle} = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         Aos.init({ duration: 300 })
@@ -26,6 +29,13 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Log In Successful !!!',
+                    icon: 'success',
+                    confirmButtonText: 'Close'
+                })
+                navigate("/");
             })
             .catch(error => {
                 console.log(error.message);
@@ -36,6 +46,13 @@ const Register = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Log In Successful !!!',
+                    icon: 'success',
+                    confirmButtonText: 'Close'
+                })
+                navigate("/");
             })
             .catch(error => {
                 console.log(error.message);

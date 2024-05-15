@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProviders";
-import { ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
@@ -26,7 +25,7 @@ const AddServices = () => {
         };
         const newService = { ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice, UserId };
         console.log(newService);
-        fetch("http://localhost:5000/services/", {
+        fetch("https://mern-verse-server.vercel.app/services/", {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

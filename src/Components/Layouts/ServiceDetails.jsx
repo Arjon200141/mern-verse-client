@@ -37,7 +37,7 @@ const ServiceDetails = () => {
             ServiceInstruction:instruction
         };
         console.log(purchase);
-        fetch('http://localhost:5000/booking' , {
+        fetch('https://mern-verse-server.vercel.app/booking' , {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
