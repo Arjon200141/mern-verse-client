@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "name": "Sophia Thompson",
+      "rating": 4.75,
+      "reviews": "Event Elevate made our corporate retreat a huge success. From venue selection to catering and logistics, everything was meticulously planned. Our team had a memorable experience, thanks to Event Elevate's exceptional service!",
+      "picture": "https://i.ibb.co/gP9Fdvm/blonde-young-businesswoman-writing-diary-with-pen-office-23-2148029077.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jason Miller",
+      "rating": 5.00,
+      "reviews": "I couldn't have asked for a better wedding planner than Event Elevate. They turned our dream wedding into reality, handling every detail with care and professionalism. Our guests are still raving about how beautiful and seamless everything was!",
+      "picture": "https://i.ibb.co/zbTbQhQ/thoughtful-businessman-sitting-office-desk-writing-trying-think-up-idea-squinting-as-pondering-new-c.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Rachel Davis",
+      "rating": 4.80,
+      "reviews": "Event Elevate transformed our product launch into a captivating event. The creative concept, decor, and coordination were impeccable. Working with their team was a pleasure, and the results were beyond our expectations!",
+      "picture": "https://i.ibb.co/M7DDtkc/handsome-young-businessman-working-office-1301-3916.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Alexandra Roberts",
+      "rating": 5.00,
+      "reviews": "We rely on Event Elevate for our annual gala, and they deliver excellence every time. Their attention to detail and dedication to creating impactful experiences are unmatched. Event Elevate truly understands our vision and executes flawlessly!",
+      "picture": "https://i.ibb.co/y4ScDDs/portrait-mature-smiling-authoress-sitting-desk-171337-19223.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Chris Johnson",
+      "rating": 4.50,
+      "reviews": "Event Elevate provided exceptional support for our charity fundraiser. Their expertise in event management ensured smooth operations, allowing us to focus on our cause. We look forward to partnering with Event Elevate for future events!",
+      "picture": "https://i.ibb.co/n3CSy0M/successful-old-businessman-suit-glasses-looking-confident-176420-31742.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Melissa Clark",
+      "rating": 5.00,
+      "reviews": "I highly recommend Event Elevate for any event planning needs. Their professionalism, creativity, and commitment to client satisfaction are outstanding. They go above and beyond to deliver unforgettable experiences!",
+      "picture": "https://i.ibb.co/cT3Ffd4/confident-smiling-businesswoman-writing-notes-176420-16602.jpg"
+    }
+  ]
+  
