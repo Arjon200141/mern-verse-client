@@ -1,9 +1,41 @@
 import { IoLocationSharp, IoPricetagsSharp } from "react-icons/io5";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageDetails = ({ manage }) => {
-    const {_id, ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice } = manage;
+    const { _id, ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice } = manage;
+
+    const handleDelete = _id => {
+        console.log(_id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/services/${_id}` , {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
+
     return (
         <div className="md:mx-40">
             <div className=" bg-white/30 rounded-xl my-8">
@@ -27,7 +59,9 @@ const ManageDetails = ({ manage }) => {
                             <Link to={`/update/${_id}`}>
                                 <button className="btn text-xl font-semibold text-center px-6 bg-green-200">Update</button>
                             </Link>
-                            <button className="btn text-xl font-semibold text-center px-6 bg-purple-200">Delete</button>
+
+                            <button onClick={() => handleDelete(_id)} className="btn text-xl font-semibold text-center px-6 bg-purple-200">Delete</button>
+
                         </div>
                     </div>
                 </div>
