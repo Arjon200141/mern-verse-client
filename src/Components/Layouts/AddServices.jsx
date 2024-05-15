@@ -1,15 +1,50 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddServices = () => {
 
     const { user } = useContext(AuthContext);
 
+    const handleAddService = e => {
+
+        e.preventDefault();
+        const form = e.target;
+        const ServiceName = form.name.value;
+        const ServiceArea = form.area.value;
+        const ServicePrice = form.price.value;
+        const ServiceDescription = form.description.value;
+        const Name = user.displayName;
+        const Email = user.email;
+        const ServiceImage = form.image.value;
+        const Image = user.photoURL;
+        const UserId = user.uid;
+        const ServiceProvider = {
+            Name, Email, Image
+        };
+        const newService = { ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice, UserId };
+        console.log(newService);
+        fetch("http://localhost:5000/services/", {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(newService),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success("Inserted")
+                }
+            })
+    }
+
     return (
         <div className="bg-green-100 p-12">
+            <ToastContainer />
             <h2 className="text-4xl font-semibold text-center">Add a Service</h2>
             <div className="md:mx-32 mt-8">
-                <form className="space-y-5 text-xl font-medium p-12 bg-green-50 rounded-xl">
+                <form onSubmit={handleAddService} className="space-y-5 text-xl font-medium p-12 bg-green-50 rounded-xl">
                     <div className="md:flex justify-between gap-10">
                         <label className="form-control w-full ">
                             <div className="label">

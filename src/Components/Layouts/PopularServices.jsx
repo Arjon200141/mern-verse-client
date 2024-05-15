@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Service from "./Service";
 
 const PopularServices = () => {
@@ -13,6 +13,10 @@ const PopularServices = () => {
                     services.slice(0, 6).map(service => <Service key={service.id} service={service}></Service>)
                 }
             </div>
+
+            <Link to='/services' className="flex justify-center">
+                <button className="btn bg-emerald-200 px-6 text-2xl mt-10">Show All</button>
+            </Link>
         </div>
     );
 };

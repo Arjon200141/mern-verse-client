@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
 
-    const {_id, ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice } = service;
+    const { _id, ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice } = service;
     return (
-        <div className="card
-         card-compact bg-base-100/35 shadow-xl">
+        <div className="card card-compact bg-base-100/35 shadow-xl">
             <figure><img src={ServiceImage} alt="Service Image" className="h-[450px]" /></figure>
             <div className="card-body ml-6 space-y-3">
                 <h2 className="card-title text-3xl">{ServiceName}</h2>
@@ -23,7 +22,7 @@ const Service = ({ service }) => {
                         <p className="text-2xl mb-2">Service Provider Details</p>
                         <div className="flex items-center gap-4">
                             <img src={ServiceProvider.Image} alt="Service Provider" className="h-14 rounded-full border-2 border-white" />
-                            <p className="text-xl"><span></span> {ServiceProvider.Name}</p>
+                            <p className="text-xl"> {ServiceProvider.Name}</p>
                         </div>
                     </div>
                 </div>

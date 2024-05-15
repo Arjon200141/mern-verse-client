@@ -1,12 +1,13 @@
 import { BsCalendar2DateFill } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
+import PropTypes from 'prop-types';
 
 const BookingDetails = ({ booking }) => {
-    const { _id, ServiceId, ServiceName, UserName, Price, Date, Image, ServiceInstruction } = booking;
+    const { ServiceId, ServiceName, UserName, Price, Date, Image, ServiceInstruction } = booking;
     return (
         <div>
             
-            <div className="bg-white/35 my-8 rounded-xl md:mx-56 flex items-center gap-12 ">
+            <div className="bg-white/35 my-8 rounded-xl md:mx-44 md:flex items-center gap-12 ">
                 <div >
                     <img src={Image} alt="" className="h-56 w-72 rounded-sm m-4" />
                 </div>
@@ -15,7 +16,7 @@ const BookingDetails = ({ booking }) => {
 
                     <p><span className="font-semibold">Service Id: </span> {ServiceId}</p>
                     <h2><span className="font-semibold">Service Requester :</span> {UserName}</h2>
-                    <div className="flex justify-between">
+                    <div className="md:flex justify-between">
                         <p className="flex items-center gap-2"><IoLocationSharp />{Price}</p>
                         <p className="flex items-center gap-2"><BsCalendar2DateFill /> {Date}</p>
                     </div>
@@ -25,6 +26,9 @@ const BookingDetails = ({ booking }) => {
             </div>
         </div>
     );
+};
+BookingDetails.propTypes = {
+    booking: PropTypes.object.isRequired,
 };
 
 export default BookingDetails;
