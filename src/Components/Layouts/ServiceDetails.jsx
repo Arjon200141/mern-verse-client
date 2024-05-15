@@ -56,7 +56,6 @@ const ServiceDetails = () => {
             console.log(error.message);
         })
     }
-
     return (
         <div className="md:m-8 " >
             <Helmet>
