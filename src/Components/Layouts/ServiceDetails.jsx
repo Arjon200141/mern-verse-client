@@ -1,18 +1,52 @@
 import { useContext } from "react";
 import { IoLocationSharp, IoPricetagsSharp } from "react-icons/io5";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
-
 
 const ServiceDetails = () => {
 
     const {user} = useContext(AuthContext)
 
-    const services = useLoaderData();
-    console.log("1", services);
-    const { id } = useParams();
-    const service = services.find(service => service.id == id);
-    console.log(service, id);
+    const service = useLoaderData();
+
+    const handlePurchase = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const id = service._id; 
+        const name = service.ServiceName;
+        const providername = service.ServiceProvider.Name;
+        const provideremail = service.ServiceProvider.Email;
+        const username = user.displayName;
+        const useremail = user.email;
+        const price = service.ServicePrice;
+        const date = form.date.value;
+        const image = service.ServiceImage;
+        const instruction = form.instruction.value;
+        const purchase = {
+            ServiceId:id,
+            ServiceName:name,
+            ProviderName:providername,
+            ProviderEmail:provideremail,
+            UserEmail:useremail,
+            UserName:username,
+            Price:price,
+            Date:date,
+            Image:image,
+            ServiceInstruction:instruction
+        };
+        console.log(purchase);
+        fetch('http://localhost:5000/booking' , {
+            method: 'POST',
+            headers:{
+                'content-type' : 'application/json'
+            },
+            body:JSON.stringify(purchase)
+        })
+        .then(res => res.json())
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
 
     return (
         <div className="md:m-8 " >
@@ -40,13 +74,13 @@ const ServiceDetails = () => {
                             <label htmlFor="my_modal_6" className="btn bg-cyan-100 w-full text-2xl font-semibold">Book Now</label>
                             <input type="checkbox" id="my_modal_6" className="modal-toggle" />
                             <div className="modal" role="dialog">
-                                <div className="modal-box ">
+                                <form onSubmit={handlePurchase} className="modal-box ">
                                     <div className="flex gap-6">
                                         <label className="form-control w-full ">
                                             <div className="label">
                                                 <span className="label-text text-xl font-semibold"> Service Id </span>
                                             </div>
-                                            <input type="text" placeholder=" Service Id" name="id" defaultValue={service.id} readOnly className="input input-bordered w-full " />
+                                            <input type="text" placeholder=" Service Id" name="id" defaultValue={service._id} readOnly className="input input-bordered w-full " />
                                         </label>
                                         <label className="form-control w-full ">
                                             <div className="label">
@@ -97,7 +131,7 @@ const ServiceDetails = () => {
                                             <div className="label">
                                                 <span className="label-text text-xl font-semibold"> Service Taking Date </span>
                                             </div>
-                                            <input type="datetime" name="date" id="" placeholder="Service Taking Date" className="input input-bordered w-full " />
+                                            <input type="date" name="date" id="" placeholder="Service Taking Date" className="input input-bordered w-full " />
                                         </label>
                                     </div>
 
@@ -121,7 +155,7 @@ const ServiceDetails = () => {
                                         <label htmlFor="my_modal_6" className="btn 
                                          mt-6">Exit</label>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -132,26 +166,3 @@ const ServiceDetails = () => {
 };
 
 export default ServiceDetails;
-
-{/* <div className="bg-no-repeat bg-cover blur-md absolute " style={{ backgroundImage: `url(${service.ServiceImage})` }}>
-                <div className="hero min-h-screen rounded-xl" >
-                    <div className="hero-content flex-col lg:flex-row">
-                        <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                        <div>
-                            <h1 className="text-5xl font-bold"></h1>
-                            <p className="py-6"></p>
-                            <button className="btn btn-primary">Get Started</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="hero min-h-screen rounded-xl bg-white/35" >
-                <div className="hero-content flex-col lg:flex-row gap-12">
-                    <img src={service.ServiceImage} className="md:ml-12 max-w-sm md:h-[450px] rounded-lg shadow-2xl " />
-                    <div>
-                        <h1 className="text-5xl font-bold">{service.ServiceName}</h1>
-                        <p className="py-6">{service.ServiceDescription}</p>
-                        <button className="btn btn-primary">Get Started</button>
-                    </div>
-                </div>
-            </div> */}

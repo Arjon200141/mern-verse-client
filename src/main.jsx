@@ -19,6 +19,7 @@ import ServicesToDo from './Components/Layouts/ServicesToDo';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import AuthProviders from './Components/providers/AuthProviders';
 import ServiceDetails from './Components/Layouts/ServiceDetails';
+import PrivateRoutes from './Components/Layouts/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -29,12 +30,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("allservices.json"),
+        loader: () => fetch("http://localhost:5000/services"),
       },
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("allservices.json"),
+        loader: () => fetch("http://localhost:5000/services"),
       },
       {
         path: "/login",
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
         element: <ManageService></ManageService>,
       },
       {
-        path: "/bookedservice",
+        path: "/booking",
         element: <BookedServices></BookedServices>,
       },
       {
@@ -61,9 +62,9 @@ const router = createBrowserRouter([
         element: <ServicesToDo></ServicesToDo>,
       },
       {
-        path:"services/:id",
-        element:<ServiceDetails></ServiceDetails>,
-        loader: () => fetch("allservices.json")
+        path: "services/:id",
+        element: <PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
       }
     ]
   },

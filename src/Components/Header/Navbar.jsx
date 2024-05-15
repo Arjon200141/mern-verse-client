@@ -61,7 +61,7 @@ const NavBar = () => {
                         <ul tabIndex={0} className="dropdown-content text-xl font-medium menu p-2 bg-base-100 w-52">
                             <li><NavLink to="/addservice" style={navlinkStyles}>Add Service</NavLink></li>
                             <li><NavLink to="/manageservice" style={navlinkStyles}>Manage Service</NavLink></li>
-                            <li><NavLink to="/bookedservice" style={navlinkStyles}>Booked-Services</NavLink></li>
+                            <li><NavLink to="/booking" style={navlinkStyles}>Booked-Services</NavLink></li>
                             <li><NavLink to="/servicetodo" style={navlinkStyles}>Service-To-Do</NavLink></li>
                         </ul>
                     </div>

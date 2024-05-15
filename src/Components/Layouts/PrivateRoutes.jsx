@@ -18,10 +18,10 @@ const PrivateRoutes = ({ children }) => {
         )
     }
 
-    if (user) {
+    if (user?.email) {
         return children;
     }
-    return <Navigate state={location.pathname} to="/login"></Navigate>
+    return <Navigate state={location.pathname} to="/login" replace></Navigate>
 };
 
 PrivateRoutes.propTypes = {
