@@ -29,12 +29,12 @@ const LogIn = () => {
 
     const handleGoogleLogin = () => {
         signInWithGoogle()
-        .then(result=>{
-            console.log(result.user);
-        })
-        .catch(error =>{
-            console.log(error.message);
-        })
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (

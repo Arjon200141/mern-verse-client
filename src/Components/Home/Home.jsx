@@ -1,4 +1,5 @@
 import Banner from "../Header/Banner";
+import FAQs from "../Layouts/FAQs";
 import PopularServices from "../Layouts/PopularServices";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <PopularServices></PopularServices>
+            <FAQs></FAQs>
         </div>
     );
 };
