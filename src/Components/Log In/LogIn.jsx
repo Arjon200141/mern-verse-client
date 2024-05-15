@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import Aos from "aos"
 import { useContext, useEffect } from "react";
 import "aos/dist/aos.css";
 import { AuthContext } from "../providers/AuthProviders";
-
 
 const LogIn = () => {
 
@@ -29,12 +28,12 @@ const LogIn = () => {
 
     const handleGoogleLogin = () => {
         signInWithGoogle()
-            .then(result => {
-                console.log(result.user);
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
     }
 
     return (
