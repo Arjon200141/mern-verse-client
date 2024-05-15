@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { IoLocationSharp, IoPricetagsSharp } from "react-icons/io5";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
+import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const ServiceDetails = () => {
 
@@ -42,7 +44,14 @@ const ServiceDetails = () => {
             },
             body:JSON.stringify(purchase)
         })
-        .then(res => res.json())
+        .then(res => {res.json()
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your Booking Has been Confirmed!!!',
+                icon: 'success',
+                confirmButtonText: 'Close'
+            })
+        })
         .catch(error => {
             console.log(error.message);
         })
@@ -50,6 +59,11 @@ const ServiceDetails = () => {
 
     return (
         <div className="md:m-8 " >
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Service Details</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h2 className="text-4xl text-center font-semibold mb-6">Service Details</h2>
             <p className="text-xl text-gray-800 text-center mb-10">Discover exquisite event services curated for every occasion, complete  with detailed descriptions and <br /> provider information to tailor your event to perfection.</p>
 

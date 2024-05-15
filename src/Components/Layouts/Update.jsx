@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProviders";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const Update = () => {
     const loadedData = useLoaderData();
@@ -42,6 +43,11 @@ const Update = () => {
 
     return (
         <div className="md:mx-32 mt-8">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update Service</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h2>Update Coffee : {loadedData.ServiceName}</h2>
             <form onSubmit={handleUpdateService} className="space-y-5 text-xl font-medium p-12 bg-green-50 rounded-xl">
                 <div className="md:flex justify-between gap-10">

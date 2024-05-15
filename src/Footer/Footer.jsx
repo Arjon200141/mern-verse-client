@@ -3,7 +3,7 @@ import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <footer className="p-10 bg-base-200 text-base-content">
+        <footer className="p-10 bg-transparent text-base-content border-t-4 border-red-50">
             <div className="md:flex justify-between mb-4">
                 <aside>
                     <p className="text-4xl font-semibold mb-4">Event <span className="text-red-600">Elevate</span></p>

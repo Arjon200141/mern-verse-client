@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import ManageDetails from "./ManageDetails";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProviders";
+import { Helmet } from "react-helmet";
 
 const ManageService = () => {
     const manageServices = useLoaderData();
@@ -18,6 +19,11 @@ const ManageService = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Manage Services</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h2 className="text-4xl text-center font-semibold text-black">Your Booked Services</h2>
             <div>
                 {

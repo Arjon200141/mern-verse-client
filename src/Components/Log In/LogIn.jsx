@@ -1,13 +1,17 @@
-import { Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import Aos from "aos"
 import { useContext, useEffect } from "react";
 import "aos/dist/aos.css";
 import { AuthContext } from "../providers/AuthProviders";
+import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
 
     const { signIn, signInWithGoogle } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         Aos.init({ duration: 300 })
@@ -22,25 +26,44 @@ const LogIn = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Register Successful !!!',
+                    icon: 'success',
+                    confirmButtonText: 'Close'
+                })
+                navigate("/");
             })
             .catch(error => console.log(error.message))
     }
 
     const handleGoogleLogin = () => {
         signInWithGoogle()
-        .then(result=>{
-            console.log(result.user);
-        })
-        .catch(error =>{
-            console.log(error.message);
-        })
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Log In Successful !!!',
+                    icon: 'success',
+                    confirmButtonText: 'Close'
+                })
+                navigate("/");
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
-        <div className="w-full py-12 bg-sky-100">
+        <div className="w-full py-12 bg-sky-100/35">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Log In Page</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <ToastContainer />
             <div className="hero-content">
-                <div className="card shrink-0 w-full max-w-lg shadow-xl bg-sky-200">
+                <div className="card shrink-0 w-full max-w-lg shadow-xl bg-sky-200/35">
                     <h2 data-aos="flip-left" className="text-3xl text-center font-semibold mt-4 pt-6">Log in to your account</h2>
                     <form onSubmit={handleLogIn} className="card-body">
                         <div className="form-control">

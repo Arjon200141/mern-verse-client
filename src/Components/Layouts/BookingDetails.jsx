@@ -1,12 +1,17 @@
 import { BsCalendar2DateFill } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
 import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet";
 
 const BookingDetails = ({ booking }) => {
     const { ServiceId, ServiceName, UserName, Price, Date, Image, ServiceInstruction } = booking;
     return (
         <div>
-            
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Booking Details</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div className="bg-white/35 my-8 rounded-xl md:mx-44 md:flex items-center gap-12 ">
                 <div >
                     <img src={Image} alt="" className="h-56 w-72 rounded-sm m-4" />

@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
+import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const AddServices = () => {
 
     const { user } = useContext(AuthContext);
-    
+
     const handleAddService = e => {
 
         e.preventDefault();
@@ -34,17 +36,26 @@ const AddServices = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    toast.success("Inserted")
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Data Inserted Successfully!!!',
+                        icon: 'success',
+                        confirmButtonText: 'Close'
+                    })
                 }
             })
     }
 
     return (
-        <div className="bg-green-100 p-12">
-            <ToastContainer />
+        <div className="bg-white/35 p-12">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Add Service</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h2 className="text-4xl font-semibold text-center">Add a Service</h2>
             <div className="md:mx-32 mt-8">
-                <form onSubmit={handleAddService} className="space-y-5 text-xl font-medium p-12 bg-green-50 rounded-xl">
+                <form onSubmit={handleAddService} className="space-y-5 text-xl font-medium p-12 bg-white/45 rounded-xl">
                     <div className="md:flex justify-between gap-10">
                         <label className="form-control w-full ">
                             <div className="label">
@@ -102,7 +113,7 @@ const AddServices = () => {
                         <input type="text" placeholder="Provider Image URL" defaultValue={user.photoURL
                         } readOnly name="providerimage" className="input input-bordered w-full " />
                     </label>
-                    <input type="submit" value="Add Service" className="btn bg-orange-100 w-full h-14 text-2xl font-semibold" />
+                    <input type="submit" value="Add Service" className="btn bg-slate-200 w-full h-14 text-2xl font-semibold" />
                 </form>
             </div>
         </div>

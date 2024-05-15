@@ -5,10 +5,11 @@ import Aos from "aos"
 import { useContext, useEffect } from "react";
 import "aos/dist/aos.css";
 import { AuthContext } from '../providers/AuthProviders';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser , signInWithGoogle} = useContext(AuthContext);
 
     useEffect(() => {
         Aos.init({ duration: 300 })
@@ -22,24 +23,35 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photo, email, password);
-        createUser(email,password)
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     const handleGoogleLogin = () => {
-
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
-        <div className="w-full bg-amber-50 py-12">
+        <div className="w-full bg-amber-200/35 py-12">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Register</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <ToastContainer />
             <div className="hero-content ">
-                <div className="card shrink-0 bg-amber-100 w-full max-w-lg shadow-xl">
+                <div className="card shrink-0 bg-amber-100/45 w-full max-w-lg shadow-xl">
                     <h2 data-aos="flip-right" className="text-3xl text-center font-semibold mt-4">Register Now</h2>
                     <form onSubmit={handleRegister} className="card-body ">
                         <div className="form-control">
