@@ -1,5 +1,6 @@
 import Banner from "../Header/Banner";
 import FAQs from "../Layouts/FAQs";
+import Gallery from "../Layouts/Gallery";
 import PopularServices from "../Layouts/PopularServices";
 import Reviews from "../Layouts/Reviews";
 
@@ -10,6 +11,7 @@ const Home = () => {
             <PopularServices></PopularServices>
             <FAQs></FAQs>
             <Reviews></Reviews>
+            <Gallery></Gallery>
         </div>
     );
 };
