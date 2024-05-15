@@ -20,6 +20,7 @@ import ErrorPage from './Components/ErrorPage/ErrorPage';
 import AuthProviders from './Components/providers/AuthProviders';
 import ServiceDetails from './Components/Layouts/ServiceDetails';
 import PrivateRoutes from './Components/Layouts/PrivateRoutes';
+import Update from './Components/Layouts/Update';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
       {
         path: "/manageservice",
         element: <ManageService></ManageService>,
+        loader: () => fetch("http://localhost:5000/services/"),
       },
       {
         path: "/booking",
@@ -64,6 +66,11 @@ const router = createBrowserRouter([
       {
         path: "services/:id",
         element: <PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
+        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+      },
+      {
+        path: "update/:id",
+        element: <Update></Update>,
         loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
       }
     ]
