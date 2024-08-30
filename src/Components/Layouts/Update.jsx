@@ -26,7 +26,7 @@ const Update = () => {
         };
         const updatedService = { ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice, UserId };
         console.log(updatedService);
-        fetch(`https://mern-verse-server.vercel.app/services/${loadedData._id}`, {
+        fetch(`http://localhost:5000/services/${loadedData._id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json'

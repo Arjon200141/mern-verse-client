@@ -25,7 +25,7 @@ const AddServices = () => {
         };
         const newService = { ServiceImage, ServiceName, ServiceDescription, ServiceProvider, ServiceArea, ServicePrice, UserId };
         console.log(newService);
-        fetch("https://mern-verse-server.vercel.app/services/", {
+        fetch("http://localhost:5000/services/", {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

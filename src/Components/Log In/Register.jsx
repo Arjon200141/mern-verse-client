@@ -1,119 +1,91 @@
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import Aos from "aos"
-import { useContext, useEffect } from "react";
-import "aos/dist/aos.css";
-import { AuthContext } from '../providers/AuthProviders';
-import { Helmet } from 'react-helmet';
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { AuthContext } from "../providers/AuthProviders";
+import SocialLogIn from "./SocialLogIn";
 
 const Register = () => {
-
-    const { createUser , signInWithGoogle} = useContext(AuthContext);
-
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
+    const from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        Aos.init({ duration: 300 })
-    }, [])
-
-    const handleRegister = e => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const photo = form.photo.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(name, photo, email, password);
-        createUser(email, password)
-            .then(result => {
-                console.log(result.user);
+    const onSubmit = data => {
+        createUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            updateUserProfile(data.name, data.photoURL)
+            .then(() => {
+                const userInfo = {
+                    name:data.name,
+                    email:data.email,
+                    photo:data.photoURL
+                }
+                axiosPublic.post('/users',userInfo)
+                .then(res => {
+                    if(res.data.insertedId)
+                        reset();
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'Log In Successful !!!',
-                    icon: 'success',
-                    confirmButtonText: 'Close'
+                    title: "Congratulations!",
+                    text: "User Created Successfully!!!",
+                    icon: "success"
+                });
+                navigate(from, { replace: true });
                 })
-                navigate("/");
             })
-            .catch(error => {
-                console.log(error.message);
-            })
-    }
-
-    const handleGoogleLogin = () => {
-        signInWithGoogle()
-            .then(result => {
-                console.log(result.user);
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Log In Successful !!!',
-                    icon: 'success',
-                    confirmButtonText: 'Close'
-                })
-                navigate("/");
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
-    }
+            .catch(error => console.error(error));
+        })
+        .catch(error => console.error(error));
+    };
 
     return (
-        <div className="w-full bg-amber-200/35 py-12">
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>Register</title>
-                <link rel="canonical" href="http://mysite.com/example" />
-            </Helmet>
-            <ToastContainer />
-            <div className="hero-content ">
-                <div className="card shrink-0 bg-amber-100/45 w-full max-w-lg shadow-xl">
-                    <h2 data-aos="flip-right" className="text-3xl text-center font-semibold mt-4">Register Now</h2>
-                    <form onSubmit={handleRegister} className="card-body ">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input data-aos="fade-right" type="text" name="name" placeholder="Your Name" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Photo URL</span>
-                            </label>
-                            <input data-aos="fade-left" type="text" name="photo" placeholder="Photo URL" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input data-aos="fade-right" type="email" name="email" placeholder="Your Email" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control relative">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input
-                                data-aos="fade-left"
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                className="input input-bordered" required />
-                        </div>
-                        <div className="form-control mt-6">
-                            <button data-aos="fade-up" className="btn bg-orange-300 px-6">Register</button>
-                        </div>
-                    </form>
-                    <div className="flex justify-center gap-1">
-                        <p>------------------</p>
-                        <h2 className="text-xl font-medium text-center mb-3"> Continue With </h2>
-                        <p>------------------</p>
+        <div>
+            <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/Jy8GC8v/top-view-travelling-accessories-money-23-2148256049.jpg)' }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-center text-neutral-content">
+                    <div className="w-[650px] bg-white/35 rounded-xl">
+                        <h2 className="mt-8 text-4xl text-black font-semibold">Register Here</h2>
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                            <div className="form-control ">
+                                <label className="label ">
+                                    <span className="label-text text-xl">Name</span>
+                                </label>
+                                <input type="text" {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered text-xl text-black" />
+                                {errors.name && <span className="text-yellow-400 font-medium">This field is required</span>}
+                            </div>
+                            <div className="form-control ">
+                                <label className="label ">
+                                    <span className="label-text text-xl">Photo URL</span>
+                                </label>
+                                <input type="text" {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered text-xl text-black" />
+                                {errors.photoURL && <span className="text-yellow-400 font-medium">This field is required</span>}
+                            </div>
+                            <div className="form-control ">
+                                <label className="label ">
+                                    <span className="label-text text-xl">Email</span>
+                                </label>
+                                <input type="email" {...register("email", { required: true })} name="email" placeholder="Email" className="input input-bordered text-xl text-black" />
+                                {errors.email && <span className="text-yellow-400 font-medium">This field is required</span>}
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-xl">Password</span>
+                                </label>
+                                <input type="password" {...register("password", { required: true })} name="password" placeholder="Password" className="input input-bordered text-xl text-black" />
+                                {errors.password && <span className="text-yellow-400 font-medium">This field is required</span>}
+                            </div>
+                            <div className="form-control mt-6">
+                                <input type="submit" value="Register" className="btn bg-lime-200 text-2xl font-semibold" />
+                            </div>
+                            <div className="divider">OR</div>
+                            <SocialLogIn></SocialLogIn>
+                        </form>
+                        <h3 className='mb-8 text-black text-2xl '>Already have an Account? <span className='font-bold'><Link to="/login">Log In Now</Link></span></h3>
                     </div>
-
-                    <div className="mb-6 flex justify-center items-center gap-12">
-                        <button data-aos="fade-right" onClick={handleGoogleLogin} className="btn h-16 px-6 py-1 md:ml-8 text-lg font-medium"><img src="https://i.ibb.co/PMh8F7x/google-symbol.png" alt="" className="h-10 w-10" /> </button>
-                    </div>
-                    <p className="text-xl font-semibold text-center mb-6">Already Have an Account? <Link to="/login" className="text-red-500">Log In</Link></p>
                 </div>
             </div>
         </div>

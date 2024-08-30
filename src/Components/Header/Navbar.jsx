@@ -2,10 +2,11 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
-import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { AuthContext } from "../providers/AuthProviders";
+import useAdmin from "../../hooks/useAdmin";
 
 const NavBar = () => {
+    const [isAdmin] = useAdmin();
     const { pathname } = useLocation();
     const isHome = pathname === '/' || '/services' || '/login' || '/register' || '/addservice' || '/manageservice' || '/bookedservice' || '/servicetodo';
 
@@ -54,19 +55,19 @@ const NavBar = () => {
             <li><NavLink to="/" style={navlinkStyles}>Home</NavLink></li>
             <li><NavLink to="/services" style={navlinkStyles}>Services</NavLink></li>
             {
-                user &&
-                <li>
-                    <div className="dropdown dropdown-bottom hover:border-2 hover:border-red-400" >
-                        <div tabIndex={0} className=" text-2xl font-medium flex items-center gap-1">Dashboard <IoIosArrowDropdownCircle className="text-semibold mt-1" /></div>
-                        <ul tabIndex={0} className="dropdown-content text-xl font-medium menu p-2 bg-base-100 w-52">
-                            <li><NavLink to="/addservice" style={navlinkStyles}>Add Service</NavLink></li>
-                            <li><NavLink to="/manageservice" style={navlinkStyles}>Manage Service</NavLink></li>
-                            <li><NavLink to="/booking" style={navlinkStyles}>Booked-Services</NavLink></li>
-                            <li><NavLink to="/servicetodo" style={navlinkStyles}>Service-To-Do</NavLink></li>
-                        </ul>
-                    </div>
-                </li>
+                user  &&
+                <li><NavLink to="/booking" style={navlinkStyles}>Booked-Services</NavLink></li>
             }
+            {
+                user  && <li><NavLink to="/addservice" style={navlinkStyles}>Add Service</NavLink></li>
+            }
+            {
+                user && <li><NavLink to="/allbookings" style={navlinkStyles}>All Bookings</NavLink></li>
+            }
+            {
+                user?<div></div>: <li><NavLink to="/about" style={navlinkStyles}>About Us</NavLink></li>
+            }
+
         </>
     );
 
